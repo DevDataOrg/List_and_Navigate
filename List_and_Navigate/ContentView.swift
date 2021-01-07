@@ -9,8 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+                  List(countryList) { countryItem in
+                    NavigationLink(destination: DetailsView(countryItem: countryItem)) {
+                        HStack {
+                          ZStack {
+                            Text(countryItem.flag)
+                              .font(.system(size: 100))
+                              .frame(width: 100, height: 50)
+                          }
+                          Text(countryItem.name)
+                            .font(.headline)
+                        }.padding(7)
+                    }    
+                  }
+                  .navigationBarTitle("Countries")
+                }
     }
 }
 
